@@ -23,6 +23,13 @@ public class ArrayXmlObject extends XmlObject {
 	}
 	
 	@Override
+	public XmlObject getChild( int pos ) throws XmlParserException {
+		if( pos < this._children.size() )
+			return this._children.get( pos );
+		throw new XmlParserException( "Position out of range" );
+	}
+	
+	@Override
 	public boolean hasChildren() {
 		return true;
 	}

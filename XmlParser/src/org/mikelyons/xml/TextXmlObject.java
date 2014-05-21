@@ -24,6 +24,11 @@ class TextXmlObject extends XmlObject {
 	public List<XmlObject> getChildren() throws XmlParserException {
 		throw new XmlParserException( "TextXmlObject does not have children" );
 	}
+	
+	@Override
+	public XmlObject getChild( int pos ) throws XmlParserException {
+		throw new XmlParserException( "TextXmlObject does not have children" );
+	}
 
 	@Override
 	public boolean hasChildren() {
