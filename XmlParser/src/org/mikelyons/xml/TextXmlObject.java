@@ -33,4 +33,13 @@ class TextXmlObject extends XmlObject {
 	void setValue( String value ) {
 		this._value = value;
 	}
+	
+	public String toString() {
+		try {
+			return "TextXmlObject: " + this.getTagName() + ": " + this.getValue();
+		} catch (XmlParserException e) {
+			e.printStackTrace();
+			return "TextXmlObject: " + this.getTagName() + ": null value";
+		}  
+	}
 }

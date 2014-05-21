@@ -41,7 +41,15 @@ public abstract class XmlObject {
 		this._tagName = tagName;
 	}
 	
+	void setAttributes(  Map<String, String> attributes ) {
+		this._attributes = attributes;
+	}
+	
 	void addAttribute( String attrName, String attrValue ) {
 		this._attributes.put(attrName, attrValue);
+	}
+	
+	public String toString() {
+		return "XmlObject";
 	}
 }

@@ -1,0 +1,7 @@
+<array>
+	<item>item1</item>
+	<array>
+		<item>arr2item1</item>
+		<item>arr2item2</item>
+	</array>
+</array>

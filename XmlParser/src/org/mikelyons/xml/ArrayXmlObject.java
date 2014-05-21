@@ -19,7 +19,7 @@ public class ArrayXmlObject extends XmlObject {
 
 	@Override
 	public List<XmlObject> getChildren() throws XmlParserException {
-		throw new XmlParserException( "TextXmlObject does not have children" );
+		return this._children;
 	}
 	
 	@Override
@@ -29,5 +29,9 @@ public class ArrayXmlObject extends XmlObject {
 	
 	void addChild( XmlObject child ) {
 		this._children.add( child );
+	}
+	
+	public String toString() {
+		return "ArrayXmlObject: " + this.getTagName();
 	}
 }
