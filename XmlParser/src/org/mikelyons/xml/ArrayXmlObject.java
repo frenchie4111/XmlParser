@@ -1,5 +1,6 @@
 package org.mikelyons.xml;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +9,7 @@ public class ArrayXmlObject extends XmlObject {
 	
 	ArrayXmlObject() {
 		super();
+		this._children = new ArrayList<XmlObject>();
 	}
 	
 	ArrayXmlObject( String name, Map<String, String> attributes, List<XmlObject> children ) {
@@ -23,5 +25,9 @@ public class ArrayXmlObject extends XmlObject {
 	@Override
 	public boolean hasChildren() {
 		return true;
+	}
+	
+	void addChild( XmlObject child ) {
+		this._children.add( child );
 	}
 }

@@ -36,4 +36,12 @@ public abstract class XmlObject {
 	public boolean hasChildren() {
 		return false;
 	}
+	
+	void setTagName( String tagName ) {
+		this._tagName = tagName;
+	}
+	
+	void addAttribute( String attrName, String attrValue ) {
+		this._attributes.put(attrName, attrValue);
+	}
 }

@@ -29,4 +29,8 @@ class TextXmlObject extends XmlObject {
 	public boolean hasChildren() {
 		return false;
 	}
+	
+	void setValue( String value ) {
+		this._value = value;
+	}
 }
