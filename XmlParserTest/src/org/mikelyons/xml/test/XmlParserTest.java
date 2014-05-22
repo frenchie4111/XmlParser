@@ -1,9 +1,6 @@
 package org.mikelyons.xml.test;
 
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 
 import org.mikelyons.xml.XmlObject;
 import org.mikelyons.xml.XmlParser;
@@ -12,7 +9,6 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.test.ActivityTestCase;
-import android.util.Log;
 import android.util.Xml;
 
 public class XmlParserTest extends ActivityTestCase {

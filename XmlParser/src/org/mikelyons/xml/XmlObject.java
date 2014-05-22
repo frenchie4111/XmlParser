@@ -78,7 +78,7 @@ public abstract class XmlObject {
 	 * @return XmlObject the child with the given name
 	 * @throws XmlParserException If not a XmlObject or doesn't have child
 	 */
-	public XmlObject getChildWithName( String name ) throws XmlParserException {
+	public XmlObject getChild( String name ) throws XmlParserException {
 		throw new XmlParserException( "XmlObject does not have children" );
 	}
 	

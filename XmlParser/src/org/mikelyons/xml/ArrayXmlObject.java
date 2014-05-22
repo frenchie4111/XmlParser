@@ -41,7 +41,7 @@ public class ArrayXmlObject extends XmlObject {
 	}
 	
 	@Override
-	public XmlObject getChildWithName( String name ) throws XmlParserException {
+	public XmlObject getChild( String name ) throws XmlParserException {
 		for( XmlObject obj : _children ) {
 			if( obj.getTagName().equals(name) ) {
 				return obj;
