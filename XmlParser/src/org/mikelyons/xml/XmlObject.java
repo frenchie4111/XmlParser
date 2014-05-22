@@ -52,7 +52,33 @@ public abstract class XmlObject {
 		throw new XmlParserException( "XmlObject does not have children" );
 	}
 	
+	/**
+	 * Returns all of the children with the given name
+	 * @param name The name to find children with the name of
+	 * @return Returns all the children who's tag name is .equal
+	 * @throws XmlParserException If this is not a XmlObject collection
+	 */
+	public List<XmlObject> getChildrenWithName( String name) throws XmlParserException {
+		throw new XmlParserException( "XmlObject does not have children" );
+	}
+	
+	/**
+	 * Gets the child at the given position
+	 * @param pos The position to get the child from
+	 * @return XmlObject the child at the given position
+	 * @throws XmlParserException If the pos is out of range
+	 */
 	public XmlObject getChild( int pos ) throws XmlParserException {
+		throw new XmlParserException( "XmlObject does not have children" );
+	}
+	
+	/**
+	 * Get's the first child with the given name
+	 * @param name The name to get the child
+	 * @return XmlObject the child with the given name
+	 * @throws XmlParserException If not a XmlObject or doesn't have child
+	 */
+	public XmlObject getChildWithName( String name ) throws XmlParserException {
 		throw new XmlParserException( "XmlObject does not have children" );
 	}
 	
@@ -62,6 +88,16 @@ public abstract class XmlObject {
 	 */
 	public boolean hasChildren() {
 		return false;
+	}
+	
+	/**
+	 * If the object has the given child, then return true
+	 * @param name Tagname to search for
+	 * @return whether or not the given tag name is found
+	 * @throws XmlParserException If the object doesn't have children
+	 */
+	public boolean hasChild( String name ) throws XmlParserException {
+		throw new XmlParserException( "XmlObject does not have children" );
 	}
 	
 	void setTagName( String tagName ) {

@@ -30,8 +30,39 @@ public class ArrayXmlObject extends XmlObject {
 	}
 	
 	@Override
+	public List<XmlObject> getChildrenWithName( String name ) throws XmlParserException {
+		List<XmlObject> objects = new ArrayList<XmlObject>();
+		for( XmlObject obj : _children ) {
+			if( obj.getTagName().equals(name) ) {
+				objects.add( obj );
+			}
+		}
+		return objects;
+	}
+	
+	@Override
+	public XmlObject getChildWithName( String name ) throws XmlParserException {
+		for( XmlObject obj : _children ) {
+			if( obj.getTagName().equals(name) ) {
+				return obj;
+			}
+		}
+		throw new XmlParserException( "Child not found" );
+	}
+	
+	@Override
 	public boolean hasChildren() {
 		return true;
+	}
+	
+	@Override
+	public boolean hasChild( String name ) throws XmlParserException {
+		for( XmlObject obj : _children ) {
+			if( obj.getTagName().equals(name) ) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	void addChild( XmlObject child ) {

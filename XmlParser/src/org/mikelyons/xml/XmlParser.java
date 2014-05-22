@@ -8,6 +8,7 @@ import java.util.Map;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
+import android.util.Log;
 import android.util.Xml;
 
 public class XmlParser {
@@ -49,7 +50,8 @@ public class XmlParser {
 			throw new XmlParserException("Parser Is Null");
 		
 		try {
-			_parser.nextTag();
+			while( _parser.getEventType() != XmlPullParser.START_TAG )
+				_parser.nextTag();
 		} catch (XmlPullParserException | IOException e) {
 			e.printStackTrace();
 			throw new XmlParserException("Failed to skip to the first tag");
@@ -78,11 +80,21 @@ public class XmlParser {
 					return obj;
 				case( XmlPullParser.TEXT ):
 					XmlObject textobj = new TextXmlObject( name, attributes, _parser.getText() );
+					Log.v("getXmlObject_rec", "TextObject Created " + textobj.getTagName());
 					_parser.nextTag(); // Skip to my end tag
+					Log.v("getXmlObject_rec", "Event Type: " + _parser.getEventType());
 					_parser.nextTag(); // Skip to the next tag. If there is another item it will be it's start tag, otherwise the array end tag
+					Log.v("getXmlObject_rec", "Event Type: " + _parser.getEventType());
 					return textobj;
+				case( XmlPullParser.END_TAG ):
+					XmlObject textObjEndTag = new TextXmlObject( name, attributes, "" );
+					Log.v("getXmlObject_rec", "TextObject Created " + textObjEndTag.getTagName());
+					_parser.nextTag(); // Skip to the next tag. If there is another item it will be it's start tag, otherwise the array end tag
+					Log.v("getXmlObject_rec", "Event Type: " + _parser.getEventType());
+					return textObjEndTag;
 				default:
-					throw new XmlParserException("Even Type Unknown");
+					Log.v("getXmlObject_rec", "Event Type Unknown " + _parser.getName() );
+					throw new XmlParserException("Event Type: " + _parser.getEventType() + " Unknown");
 			}
 		} catch (XmlPullParserException | IOException e) {
 			e.printStackTrace();

@@ -1,6 +1,9 @@
 package org.mikelyons.xml.test;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import org.mikelyons.xml.XmlObject;
 import org.mikelyons.xml.XmlParser;
@@ -149,6 +152,30 @@ public class XmlParserTest extends ActivityTestCase {
 		} catch ( XmlParserException e ) {
 			e.printStackTrace();
 			fail("Failed to get information from xml object");
+		}
+	}
+	
+	public void testComplexXml() {
+		InputStream in = getInstrumentation().getContext().getResources().openRawResource(R.raw.complex_xml);
+		XmlParser parser = null;
+		try {
+			parser = new XmlParser( in, null );
+			
+			assertNotNull( parser );
+		} catch (XmlParserException e) {
+			e.printStackTrace();
+			fail( "Failed to instantiate parser with input stream" );
+		}
+		
+		XmlObject obj = null;
+		
+		try {
+			obj = parser.getXmlObject();
+			
+			assertEquals( "rss", obj.getTagName() );
+		} catch (XmlParserException e) {
+			e.printStackTrace();
+			fail("Failed to get XmlObject");
 		}
 	}
 }
