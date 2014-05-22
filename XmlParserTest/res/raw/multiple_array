@@ -1,0 +1,14 @@
+<defaults>
+	<source>
+		<name>New York Times International</name>
+		<url>http://rss.nytimes.com/services/xml/rss/nyt/InternationalHome.xml</url>
+	</source>
+	<source>
+		<name>NPR</name>
+		<url>http://www.npr.org/rss/rss.php?id=1001</url>
+	</source>
+	<source>
+		<name>Washington Post WorldViews</name>
+		<url>http://feeds.washingtonpost.com/rss/rss_blogpost</url>
+	</source>
+</defaults>

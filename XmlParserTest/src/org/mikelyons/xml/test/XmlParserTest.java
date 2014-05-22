@@ -211,4 +211,37 @@ public class XmlParserTest extends ActivityTestCase {
 			fail("Failed to get information from xml object");
 		}
 	}
+	
+	public void testMultipleArray() {
+		InputStream in = getInstrumentation().getContext().getResources().openRawResource(R.raw.multiple_array);
+		XmlParser parser = null;
+		try {
+			parser = new XmlParser( in, null );
+			
+			assertNotNull( parser );
+		} catch (XmlParserException e) {
+			e.printStackTrace();
+			fail( "Failed to instantiate parser with input stream" );
+		}
+		
+		XmlObject obj = null;
+		
+		try {
+			obj = parser.getXmlObject();
+			
+		} catch (XmlParserException e) {
+			e.printStackTrace();
+			fail("Failed to get XmlObject");
+		}
+		
+		try {
+			
+			assertEquals( "defaults",  obj.getTagName() );
+			assertEquals( 3, obj.getChildren().size() );
+			
+		} catch ( XmlParserException e ) {
+			e.printStackTrace();
+			fail("Failed to get information from xml object");
+		}
+	}
 }

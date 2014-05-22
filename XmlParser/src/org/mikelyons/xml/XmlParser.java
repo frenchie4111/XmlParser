@@ -8,6 +8,7 @@ import java.util.Map;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
+import android.util.Log;
 import android.util.Xml;
 
 public class XmlParser {
@@ -73,12 +74,17 @@ public class XmlParser {
 					obj.setAttributes( attributes );
 					
 					while( _parser.getEventType() == XmlPullParser.START_TAG ) {
+						Log.d("getXmlObject_rec","asdf about to add child");
 						obj.addChild(getXmlObject_rec());
+						skipWhitespace();
+						Log.d("getXmlObject_rec","asdf done add child");
 					}
+					Log.d("getXmlObject_rec","asdf Done Finding Things " + _parser.getEventType());
 					_parser.next();
 					return obj;
 				case( XmlPullParser.TEXT ):
 					XmlObject textobj = new TextXmlObject( name, attributes, _parser.getText() );
+					Log.d("getXmlObject_rec","asdf added text " + textobj.getTagName() + " " + textobj.getValue());
 					_parser.nextTag(); // Skip to my end tag
 					_parser.nextTag(); // Skip to the next tag. If there is another item it will be it's start tag, otherwise the array end tag
 					return textobj;
