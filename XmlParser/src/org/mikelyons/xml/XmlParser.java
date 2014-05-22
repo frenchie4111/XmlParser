@@ -96,7 +96,7 @@ public class XmlParser {
 	}
 	
 	private void skipWhitespace() throws XmlPullParserException, IOException {
-		if( _parser.isWhitespace() ) {
+		if( _parser.getEventType() == XmlPullParser.TEXT && _parser.isWhitespace() ) {
 			_parser.nextTag();
 		}
 	}
